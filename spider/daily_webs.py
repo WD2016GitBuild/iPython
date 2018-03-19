@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 '''
-	每天抓取站酷前20条网页资讯
+	抓取dy2018最新电影
 '''
 
 request_type = "get"
@@ -26,11 +26,13 @@ def download(src, name):
 		if chunk:
 			f.write(chunk)
 
+
 def get_soup(html_text):
 	soup = BeautifulSoup(html_text, 'html.parser')
 	return soup
 
-def get_zcool():
+
+def get_dy2018():
 	url = 'http://www.zcool.com.cn/discover/607!0!0!0!0!!!!-1!0!1'
 	print('开始抓取zcool...')
 	soup = get_soup(get_html(url))
