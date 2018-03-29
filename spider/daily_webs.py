@@ -86,6 +86,6 @@ def get_68design():
 		print(card_img_src)
 		print("")
 
-get_zcool()
+# get_zcool()
 get_iiiimg()
 get_68design()
