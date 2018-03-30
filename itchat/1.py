@@ -2,8 +2,6 @@
 
 #coding=utf8
 import itchat
-import datetime  
-import time
 
 itchat.auto_login(hotReload=True)  
 #获取通讯录信息
