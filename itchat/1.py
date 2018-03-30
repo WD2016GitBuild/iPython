@@ -2,6 +2,8 @@
 
 #coding=utf8
 import itchat
+import datetime  
+import time
 
 itchat.auto_login(hotReload=True)  
 #获取通讯录信息
@@ -21,3 +23,4 @@ for i in range(2):
     #UserName需要用上面获取的自己修改
     itchat.send("abc",toUserName=userName)  
 print("Success")
+
