@@ -30,7 +30,7 @@ def search(companyName, callback):
     f = session.post(search_url, headers=search_header, data=search_data)
     soup = BeautifulSoup(f.content, "html.parser")
     list = soup.select('.middle-align tr')
-
+    num = 0
     for l in list:
         td = l.select('td')
         code = td[2].string  # 合同号
@@ -39,12 +39,15 @@ def search(companyName, callback):
         status = td[7].string  # 订单状态
         if status == '质检中' or status == '质检待领取':
             print(code + '  ' + name + ' ' + type + ' ' + status)
+            num = num + 1
         if status == '待发布' or status == '制作中':
             search_end = True
             callback(code, name, type, status)
-    if not search_end:
+    if not search_end and num > 0:
         time.sleep(10)
         search(companyName, callback)
+    else:
+        print('没有质检的订单')
 
 
 if __name__ == '__main__':
