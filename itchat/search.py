@@ -38,7 +38,8 @@ def search(companyName, callback):
         type = td[5].string  # 产品名称
         status = td[7].string  # 订单状态
         if status == '质检中' or status == '质检待领取':
-            print(code + '  ' + name + ' ' + type + ' ' + status)
+            print(code + ' ' + name + ' ' + type + ' ' + status)
+            print('')
             num = num + 1
         if status == '待发布' or status == '制作中':
             search_end = True
