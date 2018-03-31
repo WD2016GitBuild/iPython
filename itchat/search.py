@@ -36,7 +36,12 @@ def search(companyName, callback):
         code = td[2].string  # 合同号
         name = td[3].string  # 客户名称
         type = td[5].string  # 产品名称
+        yw = td[6].string # 业务类型
         status = td[7].string  # 订单状态
+        print(type)
+        if yw == '另购':
+            continue
+
         if status == '质检中' or status == '质检待领取':
             print(code + ' ' + name + ' ' + type + ' ' + status)
             print('')

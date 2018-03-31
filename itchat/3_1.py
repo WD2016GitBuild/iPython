@@ -7,7 +7,7 @@ from search import search
 import win32api,win32con
 import time
 
-
+'''
 itchat.auto_login(hotReload=True)  
 #获取通讯录信息
 account=itchat.get_friends()
@@ -19,9 +19,9 @@ mySelf = account[0]['UserName']
 rooms = itchat.get_chatrooms(update=True)
 # rooms = itchat.search_chatrooms('Design')[0]['UserName']
 rooms = itchat.search_chatrooms('Design')[0]['UserName']
-
+'''
 companyName = sys.argv[1]
-
+'''
 def listCount(name):
     account = itchat.get_friends()
     for x in account:
@@ -45,7 +45,7 @@ print('质检结果后将结果发送给微信-' + toWho)
 room = listCount(toWho)
 if room:
     print('查找到UserName：' + room)
-
+'''
 
 
 def alert(msg, title):
@@ -56,13 +56,13 @@ def handle(code,name,type,status):
     if status == '制作中':
         print('订单号：' + code + '，客户名称：' + name + '，质检被打回...')
         # itchat.send('订单号：' + code + '，客户名称：' + name + '，质检被打回...',toUserName=mySelf)
-        itchat.send('订单号：' + code + '，客户名称：' + name + '，质检被打回...',toUserName=room)
-        # alert('订单号：' + code + '，客户名称：' + name + '，质检被打回...','质检结果')
+        # itchat.send('订单号：' + code + '，客户名称：' + name + '，质检被打回...',toUserName=room)
+        alert('订单号：' + code + '，客户名称：' + name + '，质检被打回...','质检结果')
     elif status == '待发布':
         print('订单号：' + code + '，客户名称：' + name + '，质检通过了!')
         # itchat.send('订单号：' + code + '，客户名称：' + name + '，质检通过了!',toUserName=mySelf)
-        # alert('订单号：' + code + '，客户名称：' + name + '，质检通过了!', '质检结果')
-        itchat.send('订单号：' + code + '，客户名称：' + name + '，质检通过了!',toUserName=room)
+        alert('订单号：' + code + '，客户名称：' + name + '，质检通过了!', '质检结果')
+        # itchat.send('订单号：' + code + '，客户名称：' + name + '，质检通过了!',toUserName=room)
         
 search(companyName, handle)
 # itchat.send('哈哈',toUserName=rooms)
