@@ -19,18 +19,12 @@ def handle(code,name,type,status):
         print('订单号：' + code + '\r\n客户名称：' + name + '\r\n质检通过了!')
         alert('订单号：' + code + '\r\n客户名称：' + name + '\r\n质检通过了!', '质检结果')
 
-try:
-	if len(sys.argv) == 1:
-		print("参数输入错误！")
-	else:
-		companyName = sys.argv[1]
-		if len(sys.argv) == 3:
-		    orderNum = sys.argv[2]
-		else:
-		    orderNum = ""
-		search(companyName, orderNum, handle)
-except RuntimeError:
+if len(sys.argv) == 1:
 	print("参数输入错误！")
-
-
-
+else:
+	companyName = sys.argv[1]
+	if len(sys.argv) == 3:
+	    orderNum = sys.argv[2]
+	else:
+	    orderNum = ""
+	search(companyName, orderNum, handle)
