@@ -14,15 +14,15 @@ def handle(code,name,type,status):
     if status == '制作中':
         result = '订单号:' + code + '\r\n客户名称:' + name + '\r\n质检被打回...'
         print(result)
-        send_qq('严雪梅 028-6557 6671', result)
         show_result(result)
         setText(result)
+        send_qq('温州|李莉莉', result)
     elif status == '待发布':
         result = '订单号:' + code + '\r\n客户名称:' + name + '\r\n质检通过了!'
         print(result)
-        send_qq('严雪梅 028-6557 6671', result)
         show_result(result)
         setText(result)
+        send_qq('温州|李莉莉', result)
 
 if len(sys.argv) == 1:
 	print("参数输入错误！")
@@ -33,3 +33,4 @@ else:
 	else:
 	    orderNum = ""
 	search(companyName, orderNum, handle)
+

@@ -4,6 +4,8 @@ import datetime
 import sys
 import time
 
+sys.setrecursionlimit(1000000)
+
 login_url = 'http://dws.300.cn/security/doLogin'
 search_url = 'http://dws.300.cn/order/orderSearch'
 
@@ -52,13 +54,14 @@ def search(companyName, orderNum, callback):
         	currentStatus = status
         if status == '质检中' or status == '质检待领取':
             # print(code + ' ' + name + ' ' + type + ' ' + status)
-            print('.', sep=' ', end=" ", file=sys.stdout, flush=True)
+            # print('.', sep=' ', end=" ", file=sys.stdout, flush=True)
+            print(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') + ' ' + name + ' ' + status)
             num = num + 1
         if status == '待发布' or status == '制作中':
             search_end = True
             callback(code, name, type, status)
     if not search_end and num > 0:
-        time.sleep(12)
+        time.sleep(60)
         search(companyName, orderNum, callback)
     else:
         print('没有质检的订单')
