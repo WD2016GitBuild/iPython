@@ -24,7 +24,7 @@ def login():
 login()
 search_end = False
 
-def search(companyName, callback):
+def search(companyName, orderNum, callback):
     global search_end
     search_data['companyName'] = companyName;
     f = session.post(search_url, headers=search_header, data=search_data)
@@ -34,9 +34,17 @@ def search(companyName, callback):
     for l in list:
         td = l.select('td')
         code = td[2].string  # 合同号
+        if orderNum != "":
+            if code != orderNum:
+                continue
         name = td[3].string  # 客户名称
         type = td[5].string  # 产品名称
+        yw = td[6].string # 业务类型
         status = td[7].string  # 订单状态
+        print(type)
+        if yw == '另购':
+            continue
+
         if status == '质检中' or status == '质检待领取':
             print(code + ' ' + name + ' ' + type + ' ' + status)
             print('')
@@ -45,8 +53,8 @@ def search(companyName, callback):
             search_end = True
             callback(code, name, type, status)
     if not search_end and num > 0:
-        time.sleep(10)
-        search(companyName, callback)
+        time.sleep(7)
+        search(companyName, orderNum, callback)
     else:
         print('没有质检的订单')
 
