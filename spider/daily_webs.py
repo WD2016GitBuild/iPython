@@ -1,14 +1,18 @@
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup 
 
 '''
-	抓取dy2018最新电影
+	每天抓取站酷前20条网页资讯
 '''
+
 
 request_type = "get"
 
 headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3343.4 Safari/537.36'}
 data = {}
+
+global total
+total = 0
 
 def get_html(url):
 	if request_type == "get":
@@ -26,13 +30,12 @@ def download(src, name):
 		if chunk:
 			f.write(chunk)
 
-
 def get_soup(html_text):
 	soup = BeautifulSoup(html_text, 'html.parser')
 	return soup
 
-
-def get_dy2018():
+def get_zcool():
+	global total
 	url = 'http://www.zcool.com.cn/discover/607!0!0!0!0!!!!-1!0!1'
 	print('开始抓取zcool...')
 	soup = get_soup(get_html(url))
@@ -49,8 +52,10 @@ def get_dy2018():
 		print(card_a_href)
 		print(card_img_src)
 		print("")
+		total += 1
 
 def get_iiiimg():
+	global total
 	url = 'https://www.iiiimg.com/'
 	print('开始抓取iiiimg...')
 	soup = get_soup(get_html(url))
@@ -67,8 +72,10 @@ def get_iiiimg():
 		print(card_a_href)
 		print(card_img_src)
 		print("")
+		total += 1
 
 def get_68design():
+	global total
 	url = 'http://www.68design.net/work/?c=11&s=0&d=0&r=7&u=0&k=&g=&z='
 	base_url = 'http://www.68design.net'
 	print('开始抓取68design...')
@@ -85,7 +92,9 @@ def get_68design():
 		print(card_a_href)
 		print(card_img_src)
 		print("")
+		total += 1
 
-# get_zcool()
+get_zcool()
 get_iiiimg()
 get_68design()
+print('一共' + str(total) + '个案例')
