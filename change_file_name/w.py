@@ -1,8 +1,9 @@
-#coding:utf8
 import os;
 
-def rename(path):
-    # print(path)
+floder = r"F:\Order\3部\2018-05-11-四川蓉汇工程机械设备服务有限公司+全网门户+首购-吴东-陈秋霖\PSD\PSD3";
+
+def rename():
+    path = floder;
     filelist = os.listdir(path)
     for file in filelist:
         # print(file)
@@ -27,4 +28,4 @@ def rename(path):
                 os.rename(old_dir, new_dir)
                 print(old_name + "    替换成    " + file_name_1 + file_name_2)
 
-rename(r"D:\中企动力\2018-05-11-四川蓉汇工程机械设备服务有限公司+全网门户+首购-吴东-陈秋霖\PSD\PSD3")
+rename()
