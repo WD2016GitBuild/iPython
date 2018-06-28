@@ -1,9 +1,10 @@
-import os;
+import os
 import sys
+import time
 
-floder = sys.argv[1];
+floder = sys.argv[1]
 print("目录：" + floder)
-print("开始转换文件名...")
+print("开始监听目录...")
 def rename():
     path = floder;
     filelist = os.listdir(path)
@@ -31,3 +32,12 @@ def rename():
                 print(old_name + "    替换成    " + file_name_1 + file_name_2)
 
 rename()
+
+# 无限循环主体
+def loop():
+    # 间隔1秒
+    time.sleep(1)
+    rename()
+    loop()
+
+loop()
