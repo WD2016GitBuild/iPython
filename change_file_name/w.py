@@ -1,7 +1,9 @@
 import os;
+import sys
 
-floder = r"F:\Order\3部\2018-05-11-四川蓉汇工程机械设备服务有限公司+全网门户+首购-吴东-陈秋霖\PSD\PSD3";
-
+floder = sys.argv[1];
+print("目录：" + floder)
+print("开始转换文件名...")
 def rename():
     path = floder;
     filelist = os.listdir(path)
