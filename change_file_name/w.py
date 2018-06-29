@@ -5,13 +5,6 @@ import time
 # 设置最大递归深度
 sys.setrecursionlimit(1000000)
 
-# 无限循环主体
-def loop():
-    # 间隔1秒
-    time.sleep(1)
-    rename()
-
-
 floder = sys.argv[1]
 print("目录：" + floder)
 print("开始监听目录...")
@@ -41,7 +34,7 @@ def rename():
                     os.remove(new_dir)  # 删除文件
                 os.rename(old_dir, new_dir)
                 print(old_name + "    替换成    " + file_name_1 + file_name_2)
-    loop()
+    time.sleep(1)
+    rename()
 
 rename()
-loop()
