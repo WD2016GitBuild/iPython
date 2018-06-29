@@ -16,7 +16,7 @@ floder = sys.argv[1]
 print("目录：" + floder)
 print("开始监听目录...")
 def rename():
-    print("开始遍历目录...")
+    # print("开始遍历目录...")
     path = floder;
     filelist = os.listdir(path)
     for file in filelist:
