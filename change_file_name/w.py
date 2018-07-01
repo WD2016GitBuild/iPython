@@ -3,11 +3,13 @@ import sys
 import time
 
 # 设置最大递归深度
-sys.setrecursionlimit(1000000)
+sys.setrecursionlimit(1000000000)
 
 floder = sys.argv[1]
 print("目录：" + floder)
 print("开始监听目录...")
+index = 1
+
 def rename():
     # print("开始遍历目录...")
     path = floder;
@@ -32,9 +34,14 @@ def rename():
                 # 如果文件存在，则将之删除
                 if os.path.exists(new_dir): # 判断文件是否存在
                     os.remove(new_dir)  # 删除文件
-                os.rename(old_dir, new_dir)
-                print(old_name + "    替换成    " + file_name_1 + file_name_2)
-    time.sleep(1)
-    rename()
+                try :
+                    os.rename(old_dir, new_dir)
+                    print(old_name + "    替换成    " + file_name_1 + file_name_2)
+                except PermissionError as pe:
+                    print(pe)
 
-rename()
+while True:
+    print(index)
+    index += 1
+    rename()
+    time.sleep(1);
