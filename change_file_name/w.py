@@ -39,9 +39,14 @@ def rename():
                     print(old_name + "    替换成    " + file_name_1 + file_name_2)
                 except PermissionError as pe:
                     print(pe)
+                    # 继续循环
+                    loop()
 
-while True:
-    print(index)
-    index += 1
-    rename()
-    time.sleep(1);
+def loop:
+    while True:
+        print(index)
+        index += 1
+        rename()
+        time.sleep(1);
+
+loop()
