@@ -8,7 +8,6 @@ sys.setrecursionlimit(1000000000)
 floder = sys.argv[1]
 print("目录：" + floder)
 print("开始监听目录...")
-index = 1
 
 def rename():
     # print("开始遍历目录...")
@@ -42,10 +41,8 @@ def rename():
                     # 继续循环
                     loop()
 
-def loop:
+def loop():
     while True:
-        print(index)
-        index += 1
         rename()
         time.sleep(1);
 
