@@ -1,7 +1,6 @@
 # pip install itchat
 
 #coding=utf8
-import itchat
 import sys
 from search import search
 import win32api,win32con
